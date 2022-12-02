@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <title>Simulador de Movimentos Oceânicos</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link rel="html" type="text/html" href="bootstrap/tutoriais.html">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </head>
+
+  <body style="background-color: black; color: white;"> 
+    <nav class="navbar navbar-expand-lg navbar-light">
+       <!--Cria uma barra de navegação grande (expand-lg) e clara (light) -->
+       <a class="navbar-brand" href="index.html">
+         <img src="img/SFO.png" width="150 px">
+       </a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+   
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+   
+           <li class="nav-item active">
+             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+           </li>
+   
+   
+   
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Simulações
+           </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: gray;">
+             <a class="dropdown-item" href="gravitacao.html">Gravitação</a>
+             <a class="dropdown-item" href="tensao.html">Tensão do Vento</a>
+             <a class="dropdown-item" href="pressao.html"></a>Pressão Atmosférica</a>
+             <a class="dropdown-item" href="densidade.html">Densidade</a>
+             <a class="dropdown-item" href="sismicas.html">Sísmicas</a>
+             <a class="dropdown-item" href="coriolis.html">Força de Coriolis</a>
+             <a class="dropdown-item" href="atrito.html">Força de Atrito</a>
+           </div>
+         </li>
+       <li class="nav-item">
+       <a class="nav-link" href="tutoriais.html">Como usar</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="quem_somos.html">Fale Conosco</a>
+       </li>
+   
+   
+     </ul>
+   
+   </nav>
+   
+  <h1 style = "margin-left: 30px;">Fale Conosco</h1> <br> 
+  <span style = "margin-left: 30px;"> Encontrou algum erro ou tem alguma sugestão? Deixe uma mensagem: </span> <br><br>
+
+  <form method="post" id="fContato" action="mailto:emanuelconrado@ufpr.br" oninput="calc_total();">
+    <fieldset id="usuario"><legend>Identificação do Usuário</legend>
+        <p><label for="cNome">Nome:</label><input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome Completo"></p> <!--insere um campo de texto com vizualização de 20 caracteres e espaço para 30--> </fieldset>
+        <p><label for="cMail">E-mail:</label><input type="email" name="tMail" id="cMail" size="20" maxlength="40"></p>
+        <fieldset id="mensagem"><legend>Mensagem do Usuário</legend>
+          <p><label for="cMsg">Mensagem:</label><textarea name="tMsg" id="cMsg" cols="30" rows="5" placeholder="Deixe aqui sua mensagem">
+          </textarea></p>
+        </fieldset>
+
+        <input type="image" src="img/botao-enviar.png" name="tEnviar" style = "background-color: black;">
+
+</body>
+
+</html>

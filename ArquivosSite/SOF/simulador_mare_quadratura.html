@@ -1,0 +1,218 @@
+<meta charset="UTF-8">
+
+<head>
+  <title>Simulador de Movimentos Oceânicos</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="html" type="text/html" href="bootstrap/tutoriais.html">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color: black; color: white;"> 
+  <nav class="navbar navbar-expand-lg navbar-light">
+     <!--Cria uma barra de navegação grande (expand-lg) e clara (light) -->
+     <a class="navbar-brand" href="index.html">
+       <img src="img/SFO.png" width="150 px">
+     </a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+ 
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav mr-auto">
+ 
+         <li class="nav-item active">
+           <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+         </li>
+ 
+ 
+ 
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Simulações
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: gray;">
+           <a class="dropdown-item" href="gravitacao.html">Gravitação</a>
+           <a class="dropdown-item" href="tensao.html">Tensão do Vento</a>
+           <a class="dropdown-item" href="pressao.html">Pressão Atmosférica</a>
+           <a class="dropdown-item" href="densidade.html">Densidade</a>
+           <a class="dropdown-item" href="sismicas.html">Sísmicas</a>
+           <a class="dropdown-item" href="coriolis.html">Força de Coriolis</a>
+           <a class="dropdown-item" href="atrito.html">Força de Atrito</a>
+         </div>
+       </li>
+     <li class="nav-item">
+     <a class="nav-link" href="tutoriais.html">Como usar</a>
+     </li>
+     <li class="nav-item">
+     <a class="nav-link" href="quem_somos.html">Fale Conosco</a>
+     </li>
+   </ul>
+ 
+   <li style="background-color: black;">
+    <a href="simulador_gravitacao.html" style="color: white;">Voltar</a>
+    </li>
+
+ </nav>
+  <html>
+
+  <body>
+
+    <aside id="lateral">
+      <section id="lateral1">
+    
+    <div style="text-align: justify;">
+      <a href="simulador_mare_sizigia.html" style="color: white;">Maré de Sizigia</a><br>
+      <a href="simulador_mare_quadratura.html" style="color: white;">Maré de Quadratura</a><br><br>
+      <h6>Legenda</h6>
+      <p>N<sub>máx</sub>: Nível Máximo da Maré de Quadratura no mês de Setembro</p>
+      <p>N<sub>min</sub>: Nível Mínimo da Maré no mês de Setembro</p>
+      <p>N<sub>s</sub>: Nível Médio da Maré de Sizigia no mês de Setembro</p>
+      <p>N<sub>s</sub>: Nível Médio da Maré de Quadratura no mês de Setembro</p>
+    </div>
+    
+    </section> 
+    </aside>
+
+    <canvas id="cnv" width="600" height="400"
+      style=" margin-top: -230px; border: 1px solid black; background-color:rgb(200,250,255)"></canvas>
+    <!--Cria uma área para desenhar -->
+
+    <script>
+
+      var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
+      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+
+      pincel.fillStyle = 'slategray'; // Muda a cor do pincel
+      pincel.fillRect(500, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
+
+      setInterval("sol()", 200);
+
+      function sol() {
+        //SOL
+        pincel.clearRect(50, 300, 150, 350);
+
+        pincel.beginPath();
+        pincel.arc(100, 350, 30, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.fillStyle = 'yellow';
+        pincel.fill(); //preenche a figura
+
+        pincel.save();
+        pincel.translate(100, 350);
+
+        for (let i = 0; i < 36; i++) {
+          pincel.rotate(Math.PI / 18);
+          pincel.beginPath();
+          pincel.moveTo(30, 0);
+          pincel.lineTo(30 + 10 * Math.random(), 0);
+          pincel.strokeStyle = "rgb(255,220,0)";
+          pincel.lineWidth = 50;
+          pincel.stroke();
+        }
+        pincel.restore();
+      }
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("Ns  = 0,75",515,280);
+      
+
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("Nq  = 0,653",515,320);
+      
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("N   = 1,3",515,240);
+
+      pincel.font = "7px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("máx",525,245);
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("N   = -0,1",515,380);
+  
+      pincel.font = "7px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("mín",525,385);
+
+    </script>
+
+    <script>
+      var cnv = document.querySelector("canvas"); // chama a tag canvas para trabalhar em Java
+      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+
+      pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
+
+      /*
+      y = y0 * Math.sin(k * x - w * t)
+      k: número de onda (kapa: k = 2 pi / lambda)
+      w: frequência angular (omega: w = 2 pi * f)
+      w positivo, onda progressiva
+      w negativo, onda regressiva
+      */
+
+      let y0 = 15;
+      let k = 2 * Math.PI / 300;
+      let w = 2 * Math.PI * 2;
+      let t = 0;
+      let dt = 0.01;
+
+      function passo() {
+        pincel.clearRect(0, 0, 500, 300);
+
+        pincel.beginPath();
+        for (let x = 0; x <= 500; x++) {
+          let y = 160 + y0 * Math.sin(k * x - w * t);
+          pincel.lineTo(x, y);
+        }
+        pincel.lineTo(500, 0);
+        pincel.lineTo(0, 0);
+        pincel.closePath()
+
+        pincel.fillStyle = "navy";
+        pincel.fill();
+
+
+        t = t + dt;
+
+    pincel.beginPath();
+    pincel.moveTo(0,100);
+    pincel.lineTo(500,100);
+    pincel.strokeStyle = "red";
+    pincel.stroke();
+      }
+
+      setInterval("passo ()", 50);
+
+  pincel.beginPath();
+  pincel.moveTo(510,200);
+  pincel.lineTo(510,0);
+  pincel.strokeStyle = "red";
+  pincel.stroke();
+  
+    </script>
+<p style="margin-left: 140px;">Dados retirados da tábua de marés</a> de Pontal do Paraná</p>
+<p style="margin-left: 210px; margin-top: -15px;"><a href="https://tabuademares.com/br/parana/pontal-do-parana" style="color: rgb(216, 203, 21);" target="_blank">Acesse aqui a tábua de marés</a></p>
+
+
+<footer id="rodape">
+  <!--É o rodapé da página ou do conteúdo específico.-->
+  <p>Copyright &copy; 2020 - by Emanuel Conrado<br/>
+  <a href="#" target="_blank"> Facebook</a> |
+  <a href="#" target="_blank"> Instagram </a>
+  </p>
+</footer>
+
+  </body>
+
+  </html>
